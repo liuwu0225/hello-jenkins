@@ -30,7 +30,7 @@ def generateStage(job) {
         stage("Pull Project ${job}") {
             dir("Projects/${job}") {
                 // git url: "https://github.com/liuwu0225/${job}.git"
-                echo "${githubAddress}/${job}.git"
+                echo "${reposMap[job]}"
             }
         }
     }
@@ -56,11 +56,11 @@ pipeline {
                 script {
                     def projectsList = Projects.split(',')
                     if (projectsList.contains('ALL')) {
-                        echo 'ALL'
+                        repos.remove('ALL')
+                        parallel generatePullProjectsStages(repos)
                     } else {
-                        echo 'Others'
+                        parallel generatePullProjectsStages(projectsList)
                     }
-                    // parallel generatePullProjectsStages(Projects.split(','))
                 }
             }
         }
