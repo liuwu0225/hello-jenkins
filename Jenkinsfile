@@ -24,8 +24,13 @@ pipeline {
             steps {
                 script {
                     // step (
-                    def values = Projects.split(',')
-                    sh "echo ${values[0]}"
+                    def projects = Projects.split(',')
+                    if (projects.contains('ALL')) {
+                        sh "echo ALL"
+                    } else {
+                        sh "echo Others"
+                    } 
+                    
                     // )
                 }
             }
