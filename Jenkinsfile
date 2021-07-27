@@ -2,13 +2,13 @@
 import groovy.json.JsonSlurper 
 import groovy.transform.Field
 
+@Field def repos = ['ALL']
 @Field def reposMap = [:]
 @Field def githubAddress = 'https://github.com/liuwu0225'
 
 def getProjects() {
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
-        def repos = []
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parseText(get.getInputStream().getText()) 
         for (repo in data) {
@@ -54,7 +54,13 @@ pipeline {
         stage('Pull Projects') {
             steps {
                 script {
-                    parallel generatePullProjectsStages(Projects.split(','))
+                    def projectsList = Projects.split(',')
+                    if (projectsList.contains('ALL')) {
+                        echo 'ALL'
+                    } else {
+                        echo 'Others'
+                    }
+                    // parallel generatePullProjectsStages(Projects.split(','))
                 }
             }
         }
