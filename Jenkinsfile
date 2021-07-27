@@ -16,7 +16,7 @@ def getProjects() {
         }
         println(repos);
     }
-    // get.closeConnection()
+    get.closeConnection()
 }
 
 def generatePullProjectsStages(projects) {
