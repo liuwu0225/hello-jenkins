@@ -7,12 +7,12 @@ pipeline {
         MY_KUBECONFIG = credentials('my-kubeconfig')
     }
     parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     }
     stages {
         stage('build') {
             steps {
-                echo "${Greeting} jenkins"
+                echo "${CHOICE} jenkins"
             }
         }
     }
