@@ -21,7 +21,7 @@ pipeline {
     
     stages {
         stage('Pull Projects') {
-            repos = ['k8s-informer', 'Temp']
+            repos ['k8s-informer', 'Temp']
             parallel {
                 for (repo in repos) {
                     stage("Pulling Project ${repo}") {
