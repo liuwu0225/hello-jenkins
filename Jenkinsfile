@@ -1,7 +1,8 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper 
+import groovy.transform.Field
 
-def reposMap = [:]
+@Field def reposMap = [:]
 
 def getProjects() {
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
