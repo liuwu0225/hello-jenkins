@@ -25,8 +25,6 @@ pipeline {
                 script {
                     step (
                         values = '1182-2'.split('-')
-                        echo "${Projects} jenkins"
-                        echo "${values[0]}......"
                     )
                 }
             }
