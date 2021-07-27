@@ -24,8 +24,6 @@ pipeline {
             value:'One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten', 
             visibleItemCount: 10)
     }
-}
-
     
     stages {
         stage('build') {
