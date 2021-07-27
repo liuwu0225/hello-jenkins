@@ -56,13 +56,27 @@ pipeline {
                 script {
                     def projectsList = Projects.split(',')
                     if (projectsList.contains('ALL')) {
-                        repos.remove('ALL')
-                        parallel generatePullProjectsStages(repos)
+                        repos = repos.remove('ALL')
                     } else {
-                        parallel generatePullProjectsStages(projectsList)
+                        repos = projectsList
                     }
+                    parallel generatePullProjectsStages(repos)
                 }
             }
         }
+
+        // stage('Build Project and Upload Assets') {
+        //     steps {
+        //         script {
+        //             def projectsList = Projects.split(',')
+        //             if (projectsList.contains('ALL')) {
+        //                 repos.remove('ALL')
+        //                 parallel generatePullProjectsStages(repos)
+        //             } else {
+        //                 parallel generatePullProjectsStages(projectsList)
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
