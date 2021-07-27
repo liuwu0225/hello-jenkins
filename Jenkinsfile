@@ -20,7 +20,7 @@ pipeline {
     }
     
     stages {
-        stage('build') {
+        stage('Pull Projects') {
             steps {
                 script {
                     def projects = Projects.split(',')
@@ -33,6 +33,7 @@ pipeline {
 
                 dir('Projects') {
                     git url: 'https://github.com/liuwu0225/k8s-informer.git'
+                    git url: 'https://github.com/liuwu0225/Temp.git'
                 }
             }
         }
