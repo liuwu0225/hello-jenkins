@@ -23,9 +23,10 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    step (
-                        def values = '1182-2'.split('-')
-                    )
+                    // step (
+                    def foo = 'foo' 
+                    sh "echo ${foo}"
+                    // )
                 }
             }
         }
