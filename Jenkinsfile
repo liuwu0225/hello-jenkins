@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // step (
-                    def values = '1182-2'.split('-')
+                    def values = ${Projects}.split('-')
                     sh "echo ${values[0]}"
                     // )
                 }
