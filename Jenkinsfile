@@ -22,9 +22,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                values = '1182-2'.split('-')
-                echo "${Projects} jenkins"
-                echo "${values[0]}......"
+                step {
+                    values = '1182-2'.split('-')
+                    echo "${Projects} jenkins"
+                    echo "${values[0]}......"
+                }
             }
         }
     }
