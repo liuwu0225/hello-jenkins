@@ -2,12 +2,17 @@
 import groovy.json.JsonSlurper 
 
 def getProjects() {
+    def reposMap = [:]
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
-        def object = jsonSlurper.parseText(get.getInputStream().getText()) 
-        println(object);
+        def data = jsonSlurper.parseText(get.getInputStream().getText()) 
+        for (repo of data) {
+            reposMap[repo.name] = repo.git_url
+        }
+        println(reposMap);
     }
+    // get.closeConnection()
 }
 
 def generatePullProjectsStages(projects) {
