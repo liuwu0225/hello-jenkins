@@ -10,11 +10,9 @@ def parallelStagesMap = repos.collectEntries {
 def generateStage(job) {
     return {
         stage("stage: ${job}") {
-            steps {
-                dir("Projects/${job}") {
-                    git url: "https://github.com/liuwu0225/${job}.git"
-                }
-            }
+            dir("Projects/${job}") {
+                git url: "https://github.com/liuwu0225/${job}.git"
+            }        
         }
     }
 }
