@@ -25,7 +25,7 @@ pipeline {
                 script {
                     // step (
                     def values = Projects.split('-')
-                    sh "echo ${values[0]}"
+                    sh "echo ${values[0]}aaaaaaaa"
                     // )
                 }
             }
