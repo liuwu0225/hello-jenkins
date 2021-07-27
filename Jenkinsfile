@@ -21,18 +21,27 @@ def getProjects() {
 
 def generatePullProjectsStages(repos) {
     return repos.collectEntries {
-        ["${it}" : generateStage(it)]
+        ["${it}" : {
+            stage("Pull Project ${it}") {
+                dir("Projects/${it}") {
+                    // git url: "${reposMap[job]}""
+                    echo "${reposMap[it]}"
+                }
+            }
+        }]
     }
 }
 
-def generateStage(repo) {
-    return {
-        stage("Pull Project ${repo}") {
-            dir("Projects/${repo}") {
-                // git url: "${reposMap[job]}""
-                echo "${reposMap[repo]}"
+def generateBuildProjectsStages(repos) {
+    return repos.collectEntries {
+        ["${it}" : {
+            stage("Pull Project ${it}") {
+                dir("Projects/${it}") {
+                    // git url: "${reposMap[job]}""
+                    echo "Projects/${it}"
+                }
             }
-        }
+        }]
     }
 }
 
@@ -65,18 +74,12 @@ pipeline {
             }
         }
 
-        // stage('Build Project and Upload Assets') {
-        //     steps {
-        //         script {
-        //             def projectsList = Projects.split(',')
-        //             if (projectsList.contains('ALL')) {
-        //                 repos.remove('ALL')
-        //                 parallel generatePullProjectsStages(repos)
-        //             } else {
-        //                 parallel generatePullProjectsStages(projectsList)
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Build Project and Upload Assets') {
+            steps {
+                script {
+                    parallel generateBuildProjectsStages(repos)
+                }
+            }
+        }
     }
 }
