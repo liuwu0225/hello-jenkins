@@ -1,16 +1,19 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper 
 
+def reposMap = [:]
+
 def getProjects() {
-    def reposMap = [:]
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
+        def repos = []
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parseText(get.getInputStream().getText()) 
         for (repo in data) {
+            repos.push(repo.name)
             reposMap[repo.name] = repo.git_url
         }
-        println(reposMap);
+        println(repos);
     }
     // get.closeConnection()
 }
