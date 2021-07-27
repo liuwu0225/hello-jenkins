@@ -15,7 +15,7 @@ pipeline {
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
-            value:'ALL,FpsAssetLib,Audio_Menglu,Cafofo_CardsandCasinoVoiceAnnouncer', 
+            value:'ALL,FpsAssetLib,Audio_Menglu,Cafofo_CardsandCasinoVoiceAnnouncer',
             visibleItemCount: 5)
     }
     
@@ -23,15 +23,16 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    // step (
                     def projects = Projects.split(',')
                     if (projects.contains('ALL')) {
                         sh "echo ALL"
                     } else {
                         sh "echo Others"
-                    } 
-                    
-                    // )
+                    }
+                }
+
+                dir('Projects') {
+                    git url: 'https://github.com/liuwu0225/k8s-informer.git'
                 }
             }
         }
