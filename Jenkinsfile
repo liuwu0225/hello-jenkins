@@ -19,18 +19,18 @@ def getProjects() {
     }
 }
 
-def generatePullProjectsStages(projects) {
-    return projects.collectEntries {
+def generatePullProjectsStages(repos) {
+    return repos.collectEntries {
         ["${it}" : generateStage(it)]
     }
 }
 
-def generateStage(job) {
+def generateStage(repo) {
     return {
-        stage("Pull Project ${job}") {
-            dir("Projects/${job}") {
-                // git url: "https://github.com/liuwu0225/${job}.git"
-                echo "${reposMap[job]}"
+        stage("Pull Project ${repo}") {
+            dir("Projects/${repo}") {
+                // git url: "${reposMap[job]}""
+                echo "${reposMap[repo]}"
             }
         }
     }
