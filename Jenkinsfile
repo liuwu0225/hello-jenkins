@@ -7,22 +7,16 @@ pipeline {
         MY_KUBECONFIG = credentials('my-kubeconfig')
     }
     parameters {
-        // choice(name: 'Projects', choices: [
-        //     'ALL'
-        //     'FpsAssetLib', 
-        //     'Audio_Menglu',
-        //     'Cafofo_CardsandCasinoVoiceAnnouncer'
-        // ], description: 'select project(s) to be built')
         extendedChoice( 
-            defaultValue: 'One,Two,Three,Four',
-            description: '', 
+            defaultValue: '',
+            description: 'select project(s) to be built', 
             multiSelectDelimiter: ',', 
-            name: 'SAMPLE_EXTENDED_CHOICE', 
+            name: 'Projects', 
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
-            value:'One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten', 
-            visibleItemCount: 10)
+            value:'ALL,FpsAssetLib,Audio_Menglu,Cafofo_CardsandCasinoVoiceAnnouncer', 
+            visibleItemCount: 2)
     }
     
     stages {
