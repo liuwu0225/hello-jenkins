@@ -13,9 +13,18 @@ pipeline {
         //     'Audio_Menglu',
         //     'Cafofo_CardsandCasinoVoiceAnnouncer'
         // ], description: 'select project(s) to be built')
-        extendedChoice defaultValue: 'blue,green,yellow,blue', description: '', descriptionPropertyValue: 'blue,green,yellow,blue', multiSelectDelimiter: ',', name: 'favColor', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_MULTI_SELECT', value: 'blue,green,yellow,blue', visibleItemCount: 5
-
+        extendedChoice( 
+            defaultValue: 'One,Two,Three,Four',
+            description: '', 
+            multiSelectDelimiter: ',', 
+            name: 'SAMPLE_EXTENDED_CHOICE', 
+            quoteValue: false, 
+            saveJSONParameterToFile: false, 
+            type: 'PT_CHECKBOX', 
+            value:'One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten', 
+            visibleItemCount: 10)
     }
+}
 
     
     stages {
