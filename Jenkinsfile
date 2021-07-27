@@ -21,29 +21,18 @@ pipeline {
     
     stages {
         stage('Pull Projects') {
-            steps {
-                script {
-                    def projects = Projects.split(',')
-                    if (projects.contains('ALL')) {
-                        sh "echo ALL"
-                    } else {
-                        sh "echo Others"
-                    }
-                }
-
-                parallel {
-                    stage('Pulling Project k8s-informer') {
-                        steps {
-                            dir('Projects/k8s-informer') {
-                                git url: 'https://github.com/liuwu0225/k8s-informer.git'
-                            }
+            parallel {
+                stage('Pulling Project k8s-informer') {
+                    steps {
+                        dir('Projects/k8s-informer') {
+                            git url: 'https://github.com/liuwu0225/k8s-informer.git'
                         }
                     }
-                    stage('Pulling Project Temp') {
-                        steps {
-                            dir('Projects/Temp') {
-                                git url: 'https://github.com/liuwu0225/Temp.git'
-                            }
+                }
+                stage('Pulling Project Temp') {
+                    steps {
+                        dir('Projects/Temp') {
+                            git url: 'https://github.com/liuwu0225/Temp.git'
                         }
                     }
                 }
