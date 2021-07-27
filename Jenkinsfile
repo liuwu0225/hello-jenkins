@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo "${CHOICE} jenkins"
+                echo "${Projects} jenkins"
             }
         }
     }
