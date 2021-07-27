@@ -2,10 +2,10 @@
 
 def getProjects() {
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
-    def getRC = get.getResponseCode();
-    println(getRC);
-    if(getRC.equals(200)) {
-        println(get.getInputStream().getText());
+    if(get.getResponseCode().equals(200)) {
+        def jsonSlurper = new JsonSlurper()
+        def object = jsonSlurper.parseText(get.getInputStream().getText()) 
+        println(object);
     }
 }
 
