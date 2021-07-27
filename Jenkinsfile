@@ -16,7 +16,7 @@ pipeline {
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
             value:'ALL,FpsAssetLib,Audio_Menglu,Cafofo_CardsandCasinoVoiceAnnouncer', 
-            visibleItemCount: 2)
+            visibleItemCount: 5)
     }
     
     stages {
