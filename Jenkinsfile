@@ -1,11 +1,10 @@
 #!/usr/bin/env groovy
-// import com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition
 
-// def repos = ['k8s-informer', 'Temp']
-
-// def parallelStagesMap = repos.collectEntries {
-//     ["${it}" : generateStage(it)]
-// }
+def getProjects() {
+    def response = httpRequest "https://api.github.com/users/liuwu0225/repos"
+    println('Status: '+response.status)
+    println('Response: '+response.content)
+}
 
 def generatePullProjectsStages(projects) {
     return projects.collectEntries {
@@ -41,7 +40,8 @@ pipeline {
         stage('Pull Projects') {
             steps {
                 script {
-                    parallel generatePullProjectsStages(Projects.split(','))
+                    getProjects
+                    // parallel generatePullProjectsStages(Projects.split(','))
                 }
             }
         }
