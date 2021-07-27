@@ -7,7 +7,7 @@ def getProjects() {
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parseText(get.getInputStream().getText()) 
-        for (repo of data) {
+        for (repo in data) {
             reposMap[repo.name] = repo.git_url
         }
         println(reposMap);
