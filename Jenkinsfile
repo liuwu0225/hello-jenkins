@@ -41,7 +41,7 @@ pipeline {
         stage('Pull Projects') {
             steps {
                 script {
-                    parallel generatePullProjectsStages(Projects)
+                    parallel generatePullProjectsStages(Projects.split(','))
                 }
             }
         }
