@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     step (
-                        values = '1182-2'.split('-')
+                        def values = '1182-2'.split('-')
                     )
                 }
             }
