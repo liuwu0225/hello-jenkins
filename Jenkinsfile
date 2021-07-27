@@ -6,11 +6,11 @@ pipeline {
         MY_KUBECONFIG = credentials('my-kubeconfig')
     }
     parameters {
-        choice(name: 'CHOICE', choices: [
+        choice(name: 'Projects', choices: [
             'FpsAssetLib', 
             'Audio_Menglu',
             'Cafofo_CardsandCasinoVoiceAnnouncer'
-        ], description: 'Projects')
+        ], description: 'select project(s) to be built')
     }
     stages {
         stage('build') {
