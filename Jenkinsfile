@@ -15,15 +15,14 @@ pipeline {
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
-            value:'ALL,FpsAssetLib,Audio_Menglu,Cafofo_CardsandCasinoVoiceAnnouncer',
+            value:'k8s-informer, Temp',
             visibleItemCount: 5)
     }
     
     stages {
         stage('Pull Projects') {
-            repos ['k8s-informer', 'Temp']
             parallel {
-                for (repo in repos) {
+                for (repo in Projects.split(',')) {
                     stage("Pulling Project ${repo}") {
                         steps {
                             dir("Projects/${repo}") {
