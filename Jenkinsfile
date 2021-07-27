@@ -1,9 +1,12 @@
 #!/usr/bin/env groovy
 
 def getProjects() {
-    def response = httpRequest "https://api.github.com/users/liuwu0225/repos"
-    println('Status: '+response.status)
-    println('Response: '+response.content)
+    def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
+    def getRC = get.getResponseCode();
+    println(getRC);
+    if(getRC.equals(200)) {
+        println(get.getInputStream().getText());
+    }
 }
 
 def generatePullProjectsStages(projects) {
