@@ -27,7 +27,7 @@ pipeline {
                     stage("Pulling Project ${repo}") {
                         steps {
                             dir("Projects/${repo}") {
-                                git url: 'https://github.com/liuwu0225/k8s-informer.git'
+                                git url: "https://github.com/liuwu0225/${repo}.git"
                             }
                         }
                     }
