@@ -56,7 +56,7 @@ pipeline {
                 script {
                     def projectsList = Projects.split(',')
                     if (projectsList.contains('ALL')) {
-                        repos = repos.remove('ALL')
+                        repos.remove('ALL')
                     } else {
                         repos = projectsList
                     }
