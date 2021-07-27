@@ -14,9 +14,8 @@ def getProjects() {
             repos.push(repo.name)
             reposMap[repo.name] = repo.git_url
         }
-        println(repos);
+        return repos.join(',')
     }
-    get.closeConnection()
 }
 
 def generatePullProjectsStages(projects) {
@@ -46,7 +45,7 @@ pipeline {
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
-            value:'k8s-informer, Temp',
+            value: getProjects(),
             visibleItemCount: 10)
     }
     stages {
