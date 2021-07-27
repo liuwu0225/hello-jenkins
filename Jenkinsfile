@@ -31,9 +31,12 @@ pipeline {
                     }
                 }
 
-                dir('Projects') {
+                dir('Projects/k8s-informer') {
                     git url: 'https://github.com/liuwu0225/k8s-informer.git'
-                    // git url: 'https://github.com/liuwu0225/Temp.git'
+                }
+
+                dir('Projects/Temp') {
+                    git url: 'https://github.com/liuwu0225/Temp.git'
                 }
             }
         }
