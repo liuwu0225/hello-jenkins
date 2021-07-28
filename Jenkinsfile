@@ -62,7 +62,7 @@ pipeline {
             defaultValue: '',
             description: 'select project(s) to be built', 
             multiSelectDelimiter: ',', 
-            name: 'Projects', 
+            name: 'projects', 
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
@@ -73,11 +73,11 @@ pipeline {
         stage('Pull Projects') {
             steps {
                 script {
-                    if(Projects == '') {
+                    if(projects == '') {
                         print('Please select at least one project')
                         sh "exit 1"
                     }
-                    def projectsList = Projects.split(',')
+                    def projectsList = projects.split(',')
                     if (projectsList.contains('ALL')) {
                         repos.remove('ALL')
                     } else {
