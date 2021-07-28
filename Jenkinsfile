@@ -4,7 +4,6 @@ import groovy.transform.Field
 
 @Field def repos = ['ALL']
 @Field def reposMap = [:]
-@Field def githubAddress = 'https://github.com/liuwu0225'
 
 def getProjects() {
     def env = System.getenv()
@@ -18,7 +17,7 @@ def getProjects() {
         def data = jsonSlurper.parseText(get.getInputStream().getText()) 
         for (repo in data) {
             repos.push(repo.name)
-            reposMap[repo.name] = repo.git_url
+            reposMap[repo.name] = repo.clone_url
         }
         return repos.join(',')
     }
