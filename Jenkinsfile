@@ -11,8 +11,8 @@ def getProjects() {
     def psw = env['GITEA_CREDS_PSW']
     print(user)
     print(psw)
-    def env = System.getenv()
-    env.each{
+    def enva = System.getenv()
+    enva.each{
         println it
     } 
     def get = new URL("https://${user}:${psw}@api.github.com/users/liuwu0225/repos").openConnection();
