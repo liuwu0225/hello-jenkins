@@ -11,8 +11,11 @@ def getProjects() {
     def psw = env['GITEA_CREDS_PSW']
     print(user)
     print(psw)
-    def myVar = build.getEnvironment(listener).get('GITEA_CREDS_USR')
-    print(myVar)
+    def build = this.getProperty('binding').getVariable('build')
+    def listener = this.getProperty('binding').getVariable('listener')
+    def env = build.getEnvironment(listener)
+    println env
+    
     def get = new URL("https://${user}:${psw}@api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
