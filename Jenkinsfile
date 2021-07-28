@@ -71,6 +71,10 @@ pipeline {
         stage('Pull Projects') {
             steps {
                 script {
+                    if(Projects == '') {
+                        print('Please select at least one project')
+                        exit -1
+                    }
                     def projectsList = Projects.split(',')
                     print("***************")
                     print(Projects == '')
