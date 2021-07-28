@@ -76,14 +76,7 @@ pipeline {
                         sh "exit 1"
                     }
                     def projectsList = Projects.split(',')
-                    print("***************")
-                    print(Projects == '')
-                    print(projectsList)
-                    print(projectsList.size())
-                    if(projectsList.size() == 0) {
-                        print('Please select at least one project')
-                        exit -1
-                    } else if (projectsList.contains('ALL')) {
+                    if (projectsList.contains('ALL')) {
                         repos.remove('ALL')
                     } else {
                         repos = projectsList
