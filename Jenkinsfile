@@ -5,14 +5,14 @@ import groovy.transform.Field
 @Field def repos = ['ALL']
 @Field def reposMap = [:]
 
-def getProjects(usr) {
-    print("===================")
-    print(usr)
+def getProjects() {
     def env = System.getenv()
     def user = env['GITEA_CREDS_USR']
     def psw = env['GITEA_CREDS_PSW']
     print(user)
     print(psw)
+    def myVar = build.getEnvironment(listener).get('GITEA_CREDS_USR')
+    print(myVar)
     def get = new URL("https://${user}:${psw}@api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
@@ -68,7 +68,7 @@ pipeline {
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
-            value: getProjects(env.GITEA_CREDS_USR),
+            value: getProjects(),
             visibleItemCount: 10)
     }
     stages {
