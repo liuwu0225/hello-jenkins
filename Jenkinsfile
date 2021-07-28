@@ -73,7 +73,7 @@ pipeline {
                 script {
                     if(Projects == '') {
                         print('Please select at least one project')
-                        System.exit(-1)
+                        sh "exit 1"
                     }
                     def projectsList = Projects.split(',')
                     print("***************")
