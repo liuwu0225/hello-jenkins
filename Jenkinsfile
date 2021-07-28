@@ -8,8 +8,9 @@ import groovy.transform.Field
 
 def getProjects() {
     def env = System.getenv()
-    println(env['GITEA_CREDS'])
-    def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
+    def user = env['GITEA_CREDS_USR']
+    def psw = env['GITEA_CREDS_PSW']
+    def get = new URL("https://${user}:${pws}@api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parseText(get.getInputStream().getText()) 
