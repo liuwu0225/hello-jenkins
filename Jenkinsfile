@@ -73,7 +73,7 @@ pipeline {
                 script {
                     def projectsList = Projects.split(',')
                     print("***************")
-                    print(Projects === '')
+                    print(Projects == '')
                     print(projectsList)
                     print(projectsList.size())
                     if(projectsList.size() == 0) {
