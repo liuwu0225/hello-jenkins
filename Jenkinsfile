@@ -56,6 +56,7 @@ pipeline {
         GITEA_CREDS = credentials('liuwu-gitea')
     }
     parameters {
+        choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
         extendedChoice( 
             defaultValue: '',
             description: 'select project(s) to be built', 
