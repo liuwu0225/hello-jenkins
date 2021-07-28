@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper 
 import groovy.transform.Field
+import jenkins.*
+import jenkins.model.*
 
 @Field def repos = ['ALL']
 @Field def reposMap = [:]
@@ -11,10 +13,9 @@ def getProjects() {
     // def psw = env['GITEA_CREDS_PSW']
     // print(user)
     // print(psw)
-    def build = this.getProperty('binding').getVariable('build')
-    def listener = this.getProperty('binding').getVariable('listener')
-    def env = build.getEnvironment(listener)
-    println env
+    // 
+    
+    println binding.build.environment
     
     def get = new URL("https://${user}:${psw}@api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
