@@ -22,11 +22,10 @@ def getProjects() {
         null,
         null
     ).find{it.id == 'liuwu-gitea'};
-    
-    println jenkinsCredentials.username
-    println jenkinsCredentials.password
-    
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
+    String userpass = jenkinsCredentials.username + ":" + jenkinsCredentials.password;
+    String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
+    get.setRequestProperty ("Authorization", basicAuth);
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parseText(get.getInputStream().getText()) 
