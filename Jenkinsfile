@@ -71,8 +71,11 @@ pipeline {
         stage('Pull Projects') {
             steps {
                 script {
-                    def projectsList = Projects.split(',')
-                    if (projectsList.contains('ALL')) {
+                    def  = Projects.split(',')
+                    if(projectsList.size() == 0) {
+                        print('Please select at least one project')
+                        System.exit(-1)
+                    } else if (projectsList.contains('ALL')) {
                         repos.remove('ALL')
                     } else {
                         repos = projectsList
