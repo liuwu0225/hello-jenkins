@@ -7,6 +7,8 @@ import groovy.transform.Field
 @Field def githubAddress = 'https://github.com/liuwu0225'
 
 def getProjects() {
+    def env = System.getenv()
+    println(env['GITEA_CREDS'])
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
         def jsonSlurper = new JsonSlurper()
@@ -47,6 +49,9 @@ def generateBuildProjectsStages(repos) {
 
 pipeline {
     agent any
+    environment {
+        GITEA_CREDS = credentials('liuwu-gitea')
+    }
     parameters {
         extendedChoice( 
             defaultValue: '',
