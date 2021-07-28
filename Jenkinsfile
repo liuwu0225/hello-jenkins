@@ -28,7 +28,9 @@ def generatePullProjectsStages(repos) {
         ["${it}" : {
             stage("Pull Project ${it}") {
                 dir("Projects/${it}") {
-                    // git url: "${reposMap[job]}""
+                    // git branch: 'master'
+                    //     credentialsId: 'liuwu-gitea'
+                    //     url: "${reposMap[job]}" 
                     echo "${reposMap[it]}"
                 }
             }
@@ -41,8 +43,8 @@ def generateBuildProjectsStages(repos) {
         ["${it}" : {
             stage("Pull Project ${it}") {
                 dir("Projects/${it}") {
-                    // git url: "${reposMap[job]}""
-                    echo "Projects/${it}"
+                    // TODO
+                    // Project build and post script
                 }
             }
         }]
