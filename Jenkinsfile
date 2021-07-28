@@ -6,11 +6,11 @@ import groovy.transform.Field
 @Field def reposMap = [:]
 
 def getProjects() {
-    def env = System.getenv()
-    def user = env['GITEA_CREDS_USR']
-    def psw = env['GITEA_CREDS_PSW']
-    print(user)
-    print(psw)
+    // def env = System.getenv()
+    // def user = env['GITEA_CREDS_USR']
+    // def psw = env['GITEA_CREDS_PSW']
+    // print(user)
+    // print(psw)
     def build = this.getProperty('binding').getVariable('build')
     def listener = this.getProperty('binding').getVariable('listener')
     def env = build.getEnvironment(listener)
