@@ -68,7 +68,7 @@ pipeline {
             quoteValue: false, 
             saveJSONParameterToFile: false, 
             type: 'PT_CHECKBOX', 
-            value: getProjects($GITEA_CREDS_USR),
+            value: getProjects(env.GITEA_CREDS_USR),
             visibleItemCount: 10)
     }
     stages {
