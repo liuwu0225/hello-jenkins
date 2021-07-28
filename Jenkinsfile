@@ -24,7 +24,7 @@ def getProjects() {
     ).find{it.id == 'liuwu-gitea'};
     
     println jenkinsCredentials.username
-    println jenkinsCredentials.username
+    println jenkinsCredentials.password
     
     def get = new URL("https://api.github.com/users/liuwu0225/repos").openConnection();
     if(get.getResponseCode().equals(200)) {
