@@ -72,6 +72,8 @@ pipeline {
             steps {
                 script {
                     def projectsList = Projects.split(',')
+                    print("***************")
+                    print(projectsList.size())
                     if(projectsList.size() == 0) {
                         print('Please select at least one project')
                         exit -1
