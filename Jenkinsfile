@@ -44,7 +44,7 @@ def generatePullProjectsStages(repos) {
                 dir("Projects/${it}") {
                     // git branch: 'master'
                     //     credentialsId: 'liuwu-gitea'
-                    //     url: "${reposMap[job]}" 
+                    //     url: "${reposMap[job]}"
                     sh "printenv"
                 }
             }
@@ -52,13 +52,26 @@ def generatePullProjectsStages(repos) {
     }
 }
 
-def generateBuildProjectsStages(repos) {
+def getSystem(system) {
+    switch(system) {
+        case 'stg':
+            return '1';
+        default:
+            return '';
+    }
+}
+
+def generateBuildProjectsStages(repos, system) {
     return repos.collectEntries {
         ["${it}" : {
             stage("Pull Project ${it}") {
                 dir("Projects/${it}") {
                     // TODO
                     // Project build and post script
+                    sh """
+                        export MY_SYSTEM = ${system}
+                        printenv
+                    """
                 }
             }
         }]
@@ -69,7 +82,6 @@ pipeline {
     agent any
     environment {
         GITEA_CREDS = credentials('liuwu-gitea')
-        SYSTEM = "${params.System}"
     }
     parameters {
         choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
@@ -98,7 +110,7 @@ pipeline {
                     } else {
                         repos = projectsList
                     }
-                    parallel generatePullProjectsStages(repos)
+                    parallel generatePullProjectsStages(repos, getSystem(System))
                 }
             }
         }
