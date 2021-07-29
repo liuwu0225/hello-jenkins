@@ -69,7 +69,7 @@ def generateBuildProjectsStages(repos, s) {
                     // TODO
                     // Project build and post script
                     sh """
-                        export MY_SYSTEM = ${s}
+                        export MY_SYSTEM=${s}
                         printenv
                     """
                 }
