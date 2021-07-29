@@ -45,7 +45,7 @@ def generatePullProjectsStages(repos) {
                     // git branch: 'master'
                     //     credentialsId: 'liuwu-gitea'
                     //     url: "${reposMap[job]}" 
-                    echo "${reposMap[it]}"
+                    sh "printenv"
                 }
             }
         }]
@@ -69,6 +69,7 @@ pipeline {
     agent any
     environment {
         GITEA_CREDS = credentials('liuwu-gitea')
+        SYSTEM = "${params.System}"
     }
     parameters {
         choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
