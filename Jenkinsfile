@@ -61,7 +61,7 @@ def getSystem(system) {
     }
 }
 
-def generateBuildProjectsStages(repos, system) {
+def generateBuildProjectsStages(repos, s) {
     return repos.collectEntries {
         ["${it}" : {
             stage("Pull Project ${it}") {
@@ -69,7 +69,7 @@ def generateBuildProjectsStages(repos, system) {
                     // TODO
                     // Project build and post script
                     sh """
-                        export MY_SYSTEM = ${system}
+                        export MY_SYSTEM = ${s}
                         printenv
                     """
                 }
