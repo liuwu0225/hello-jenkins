@@ -110,7 +110,7 @@ pipeline {
                     } else {
                         repos = projectsList
                     }
-                    parallel generatePullProjectsStages(repos, getSystem(System))
+                    parallel generatePullProjectsStages(repos)
                 }
             }
         }
@@ -118,7 +118,7 @@ pipeline {
         stage('Build Project and Upload Assets') {
             steps {
                 script {
-                    parallel generateBuildProjectsStages(repos)
+                    parallel generateBuildProjectsStages(repos, getSystem(System))
                 }
             }
         }
