@@ -57,7 +57,7 @@ def getSystem(system) {
         case 'stg':
             return '1';
         default:
-            return '';
+            return '1';
     }
 }
 
