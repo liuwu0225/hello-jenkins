@@ -85,6 +85,7 @@ pipeline {
     }
     parameters {
         choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
+        string(name: 'UserId', defaultValue: '', description: 'input user id')
         extendedChoice( 
             defaultValue: '',
             description: 'select project(s) to be built', 
