@@ -82,6 +82,7 @@ pipeline {
     agent any
     environment {
         GITEA_CREDS = credentials('liuwu-gitea')
+        UserId = UserId
     }
     parameters {
         choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
