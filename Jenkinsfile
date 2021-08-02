@@ -61,7 +61,7 @@ def getSystem(system) {
     }
 }
 
-def generateBuildProjectsStages(repos, s) {
+def generateBuildProjectsStages(repos, system, userId) {
     return repos.collectEntries {
         ["${it}" : {
             stage("Pull Project ${it}") {
@@ -69,7 +69,8 @@ def generateBuildProjectsStages(repos, s) {
                     // TODO
                     // Project build and post script
                     sh """
-                        export MY_SYSTEM=${s}
+                        export MY_SYSTEM=${system}
+                        export MY_USERID=${userId}
                         printenv
                     """
                 }
@@ -82,7 +83,6 @@ pipeline {
     agent any
     environment {
         GITEA_CREDS = credentials('liuwu-gitea')
-        UserId = UserId
     }
     parameters {
         choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
