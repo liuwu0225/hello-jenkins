@@ -45,7 +45,7 @@ def generatePullProjectsStages(repos) {
                     // git branch: 'master'
                     //     credentialsId: 'liuwu-gitea'
                     //     url: "${reposMap[job]}"
-                    sh "printenv"
+                    // sh "printenv"
                 }
             }
         }]
@@ -120,7 +120,8 @@ pipeline {
         stage('Build Project and Upload Assets') {
             steps {
                 script {
-                    parallel generateBuildProjectsStages(repos, getSystem(System))
+                    def sys = getSystem(System)
+                    parallel generateBuildProjectsStages(repos, sys, UserId)
                 }
             }
         }
