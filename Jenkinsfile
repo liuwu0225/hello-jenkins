@@ -14,7 +14,7 @@ def loadCredentials() {
     def credsArr = credentials.split(";")
     credsArr.each {
         def data = it.split(",")
-        credsMap["${data[0]}_${data[1]}_${data[2]}"] = "${data[3]}@${data[4]}"
+        credsMap["${data[0]}-${data[1]}-${data[2]}"] = "${data[3]}-${data[4]}"
     }
 }
 
@@ -72,11 +72,11 @@ def getSystem(system) {
 
 def generateBuildProjectsStages(repos, environment, region) {
     repos.each {
-        String credKey = "${region}_${environment}_Infinity_Shoot"
+        String credKey = "${region}-${environment}-Infinity_Shoot"
         print credKey
         print credsMap
         def v = credsMap.each {
-            if(it.key == "CN_Stging_Infinity_Shoot") {
+            if(it.key == "CN-Stging-Infinity_Shoot") {
                 print it.key
             }
         }
