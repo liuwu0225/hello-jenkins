@@ -81,7 +81,9 @@ def generateBuildProjectsStages(repos, environment, region) {
     //     }
     //     print credsMap[credKey]
     // }
-    def mp = ["TopicName" : "Maps", "TopicDescription" : "Methods in Maps"] 
+    def mp = [:]
+    mp["TopicName"] = "Maps"
+    // def mp = ["TopicName" : "Maps", "TopicDescription" : "Methods in Maps"] 
     println(mp.get("TopicName")); 
     println(mp.get("Topic")); 
     return repos.collectEntries {
