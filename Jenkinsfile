@@ -78,9 +78,10 @@ def generateBuildProjectsStages(repos, environment, region) {
         def credKey = "${region}_${environment}_Infinity_Shoot"
         print credKey
         print credsMap
-        def v = credsMap.each {
-            print it.key
-        }
+        // def v = credsMap.each {
+        //     print it.key
+        // }
+        print credsMap.get(credsMap)
     }
     return repos.collectEntries {
         ["${it}" : {
