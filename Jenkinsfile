@@ -79,7 +79,7 @@ def generateBuildProjectsStages(repos, environment, region) {
         print credKey
         print credsMap
         def v = credsMap.each {
-            print it.value.username
+            print it.key
         }
     }
     return repos.collectEntries {
