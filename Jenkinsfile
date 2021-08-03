@@ -11,12 +11,13 @@ import hudson.model.*
 @Field def credsMap = [:]
 
 def loadCredentials() {
-    def credsArr = credentials.split(";")
-    credsArr.each {
-        def data = it.split(",")
-        String key = "${data[0]}-${data[1]}-${data[2]}"
-        credsMap[key] = "${data[3]}-${data[4]}"
-    }
+    // def credsArr = credentials.split(";")
+    // credsArr.each {
+    //     def data = it.split(",")
+    //     String key = "${data[0]}-${data[1]}-${data[2]}"
+    //     credsMap[key] = "${data[3]}-${data[4]}"
+    // }
+    credsMap["CN_Stging_Infinity_Shoot"] = "developer@yahaha.games,Dev4fun"
 }
 
 def getProjects() {
@@ -72,28 +73,27 @@ def getSystem(system) {
 }
 
 def generateBuildProjectsStages(repos, environment, region) {
-    // repos.each {
-    //     String credKey = "${region}-${environment}-Infinity_Shoot"
-    //     print credKey
-    //     print credsMap
-    //     def mp = [:]
-    //     credsMap.each {
-    //         mp[it.key] = it.value
-    //     }
-    //     print mp
-    //     print mp["CN-Stging-Infinity_Shoot"]
-    //     // print credsMap[credKey]
-    // }
-    def mp = [:]
-    def key = "CN-Stging-Infinity_Shoot"
-    mp["A-${key}"] = "creator@yahaha.com-Hello1234"
-    mp["TopicName1"] = "Maps1"
-    mp["TopicName2"] = "Maps2"
-    mp["TopicName3"] = "Maps3"
-    print mp
-    // def mp = ["TopicName" : "Maps", "TopicDescription" : "Methods in Maps"] 
-    println(mp.get("A-CN-Stging-Infinity_Shoot")); 
-    println(mp.get("Topic")); 
+    repos.each {
+        String credKey = "${region}_${environment}_Infinity_Shoot"
+        print credKey
+        print credsMap
+        // def mp = [:]
+        // credsMap.each {
+        //     mp[it.key] = it.value
+        // }
+        // print mp
+        // print mp["CN-Stging-Infinity_Shoot"]
+        print credsMap[credKey]
+    }
+    // def mp = [:]
+    // def key = "CN-Stging-Infinity_Shoot"
+    // mp["A-${key}"] = "creator@yahaha.com-Hello1234"
+    // mp["TopicName1"] = "Maps1"
+    // mp["TopicName2"] = "Maps2"
+    // mp["TopicName3"] = "Maps3"
+    // print mp
+    // // def mp = ["TopicName" : "Maps", "TopicDescription" : "Methods in Maps"] 
+    // println(mp.get("A-CN-Stging-Infinity_Shoot")); 
     return repos.collectEntries {
         ["${it}" : {
             stage("Pull Project ${it}") {
