@@ -19,7 +19,6 @@ def loadCredentials() {
             password: data[4]
         ]
     }
-    print credsMap
 }
 
 def getProjects() {
@@ -79,7 +78,8 @@ def generateBuildProjectsStages(repos, environment, region) {
         def credKey = "${region}_${environment}_Infinity_Shoot"
         print credKey
         print credsMap
-        print credsMap.CN_Stging_Lover_Catcher
+        def v = credsMap.find{ it.key == credKey }?.value
+        print v
     }
     return repos.collectEntries {
         ["${it}" : {
