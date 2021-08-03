@@ -79,7 +79,7 @@ def generateBuildProjectsStages(repos, environment, region) {
         print credKey
         print credsMap
         def v = credsMap.each {
-            if(it.key == credKey) {
+            if(it.key == "${region}_${environment}_Infinity_Shoot") {
                 print it.key
             }
         }
