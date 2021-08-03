@@ -11,13 +11,33 @@ import hudson.model.*
 @Field def credsMap = [:]
 
 def loadCredentials() {
-    // def credsArr = credentials.split(";")
-    // credsArr.each {
-    //     def data = it.split(",")
-    //     String key = "${data[0]}-${data[1]}-${data[2]}"
-    //     credsMap[key] = "${data[3]}-${data[4]}"
-    // }
     credsMap["CN_Stging_Infinity_Shoot"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Lover_Catcher"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Tutorial_1"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Desert"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Nature_Week"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Tutorial_2"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_TerrainL"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Forest"] = "developer@yahaha.games,Dev4fun"
+    credsMap["CN_Stging_Empty_Scene"] = "developer@yahaha.games,Dev4fun"
+    credsMap["EU_Production_Infinity_Shoot"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Lover_Catcher"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Tutorial_1"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Desert"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Nature_Week"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Tutorial_2"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_TerrainL"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Forest"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Empty_Scene"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Basic_Shapes"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Construction_Corps"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Yahaha_Fall"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Audio_Menglu"] = "creator@yahaha.com,Hello1234"
+    credsMap["EU_Production_Viking_Ice_World"] = "creator@yahaha.com,Test1234"
+    credsMap["EU_Production_Modern_Supermarket"] = "info@novadev.com,Test1234"
+    credsMap["EU_Production_Japanese_Apartment"] = "suppport@vonoffice.com,Test1234"
+    credsMap["EU_Production_House_Furniture_Pack"] = "AidenGames@gmail.com,Test1234"
+    credsMap["EU_Production_Vectorian_interior"] = "username=contact@alex.com,Test1234"
 }
 
 def getProjects() {
