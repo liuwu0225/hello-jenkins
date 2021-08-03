@@ -83,6 +83,7 @@ def generateBuildProjectsStages(repos, environment, region) {
     // }
     def mp = [:]
     mp["TopicName"] = "Maps"
+    print mp
     // def mp = ["TopicName" : "Maps", "TopicDescription" : "Methods in Maps"] 
     println(mp.get("TopicName")); 
     println(mp.get("Topic")); 
