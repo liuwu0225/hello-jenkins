@@ -80,7 +80,7 @@ def generateBuildProjectsStages(repos, environment, region) {
                 print it.key
             }
         }
-        print credsMap.get(credKey)
+        print credsMap[credKey]
     }
     return repos.collectEntries {
         ["${it}" : {
