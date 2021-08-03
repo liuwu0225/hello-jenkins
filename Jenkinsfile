@@ -77,6 +77,7 @@ def getSystem(system) {
 def generateBuildProjectsStages(repos, system, region) {
     repos.each {
         def credKey = "${region}_${system}_${it}"
+        print credKey
         print credsMap[credKey]
     }
     return repos.collectEntries {
@@ -86,8 +87,7 @@ def generateBuildProjectsStages(repos, system, region) {
                     // TODO
                     // Project build and post script
                     sh """
-                        export MY_SYSTEM=${system}
-                        export MY_USERID=${userId}
+                        echo "OK"
                     """
                 }
             }
