@@ -14,7 +14,8 @@ def loadCredentials() {
     def credsArr = credentials.split(";")
     credsArr.each {
         def data = it.split(",")
-        credsMap["${data[0]}-${data[1]}-${data[2]}"] = "${data[3]}-${data[4]}"
+        String key = "${data[0]}-${data[1]}-${data[2]}"
+        credsMap[key] = "${data[3]}-${data[4]}"
     }
 }
 
@@ -80,7 +81,7 @@ def generateBuildProjectsStages(repos, environment, region) {
                 print it.key
             }
         }
-        print credsMap.(credKey as java.lang.String)
+        print credsMap.(credKey as String)
     }
     return repos.collectEntries {
         ["${it}" : {
