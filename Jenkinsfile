@@ -9,6 +9,12 @@ import hudson.model.*
 @Field def repos = ['ALL']
 @Field def reposMap = [:]
 
+def loadCredentials() {
+    new File("../assets-credentials.csv").eachLine { line ->
+        println line
+    }
+}
+
 def getProjects() {
     // def env = System.getenv()
     // def user = env['GITEA_CREDS_USR']
@@ -120,8 +126,9 @@ pipeline {
         stage('Build Project and Upload Assets') {
             steps {
                 script {
-                    def sys = getSystem(System)
-                    parallel generateBuildProjectsStages(repos, sys, UserId)
+                    loadCredentials()
+                    // def sys = getSystem(System)
+                    // parallel generateBuildProjectsStages(repos, sys, UserId)
                 }
             }
         }
