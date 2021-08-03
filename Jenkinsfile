@@ -8,12 +8,14 @@ import hudson.model.*
 
 @Field def repos = ['ALL']
 @Field def reposMap = [:]
+@Field def credsMap = [:]
 
 def loadCredentials() {
-    def credArr = credentials.split(";")
-    credArr.each {
-        print "=================="
-        print "${it}"
+    def credsArr = credentials.split(";")
+    credsArr.each {
+        def data = it.split(",")
+        print "====================="
+        print "${data[0]}"
     }
 }
 
