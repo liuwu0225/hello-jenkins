@@ -81,6 +81,7 @@ def generateBuildProjectsStages(repos, environment, region) {
             mp[it.key] = it.value
         }
         print mp
+        print mp["CN-Stging-Infinity_Shoot"]
         // print credsMap[credKey]
     }
     // def mp = [:]
