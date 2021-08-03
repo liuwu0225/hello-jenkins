@@ -72,15 +72,15 @@ def getSystem(system) {
 
 def generateBuildProjectsStages(repos, environment, region) {
     repos.each {
-        String credKey = "${region}-${environment}-Infinity_Shoot"
+         = "${region}-${environment}-Infinity_Shoot"
         print credKey
         print credsMap
-        def v = credsMap.each {
+        credsMap.each {
             if(it.key == "CN-Stging-Infinity_Shoot") {
                 print it.key
             }
         }
-        print credsMap[credKey]
+        print credsMap.(credKey as java.lang.String)
     }
     return repos.collectEntries {
         ["${it}" : {
