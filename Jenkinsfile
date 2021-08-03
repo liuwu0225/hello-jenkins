@@ -10,10 +10,7 @@ import hudson.model.*
 @Field def reposMap = [:]
 
 def loadCredentials() {
-    credentials.eachLine { String line ->
-        print "---------------------"
-        println line
-    }
+    print credentials..split(";")
 }
 
 def getProjects() {
@@ -137,31 +134,31 @@ pipeline {
 }
 
 @Field def credentials = '''
-CN,Stging,Infinity_Shoot,developer@yahaha.games,Dev4fun
-CN,Stging,Lover_Catcher,developer@yahaha.games,Dev4fun
-CN,Stging,Tutorial_1,developer@yahaha.games,Dev4fun
-CN,Stging,Desert,developer@yahaha.games,Dev4fun
-CN,Stging,Nature_Week,developer@yahaha.games,Dev4fun
-CN,Stging,Tutorial_2,developer@yahaha.games,Dev4fun
-CN,Stging,TerrainL,developer@yahaha.games,Dev4fun
-CN,Stging,Forest,developer@yahaha.games,Dev4fun
-CN,Stging,Empty_Scene,developer@yahaha.games,Dev4fun
-EU,Production,Infinity_Shoot,creator@yahaha.com,Hello1234
-EU,Production,Lover_Catcher,creator@yahaha.com,Hello1234
-EU,Production,Tutorial_1,creator@yahaha.com,Hello1234
-EU,Production,Desert,creator@yahaha.com,Hello1234
-EU,Production,Nature_Week,creator@yahaha.com,Hello1234
-EU,Production,Tutorial_2,creator@yahaha.com,Hello1234
-EU,Production,TerrainL,creator@yahaha.com,Hello1234
-EU,Production,Forest,creator@yahaha.com,Hello1234
-EU,Production,Empty_Scene,creator@yahaha.com,Hello1234
-EU,Production,Basic_Shapes,creator@yahaha.com,Hello1234
-EU,Production,Construction_Corps,creator@yahaha.com,Hello1234
-EU,Production,Yahaha_Fall,creator@yahaha.com,Hello1234
-EU,Production,Audio_Menglu,creator@yahaha.com,Hello1234
-EU,Production,Viking_Ice_World,creator@yahaha.com,Test1234
-EU,Production,Modern_Supermarket,info@novadev.com,Test1234
-EU,Production,Japanese_Apartment,suppport@vonoffice.com,Test1234
-EU,Production,House_Furniture_Pack,AidenGames@gmail.com,Test1234
+CN,Stging,Infinity_Shoot,developer@yahaha.games,Dev4fun;
+CN,Stging,Lover_Catcher,developer@yahaha.games,Dev4fun;
+CN,Stging,Tutorial_1,developer@yahaha.games,Dev4fun;
+CN,Stging,Desert,developer@yahaha.games,Dev4fun;
+CN,Stging,Nature_Week,developer@yahaha.games,Dev4fun;
+CN,Stging,Tutorial_2,developer@yahaha.games,Dev4fun;
+CN,Stging,TerrainL,developer@yahaha.games,Dev4fun;
+CN,Stging,Forest,developer@yahaha.games,Dev4fun;
+CN,Stging,Empty_Scene,developer@yahaha.games,Dev4fun;
+EU,Production,Infinity_Shoot,creator@yahaha.com,Hello1234;
+EU,Production,Lover_Catcher,creator@yahaha.com,Hello1234;
+EU,Production,Tutorial_1,creator@yahaha.com,Hello1234;
+EU,Production,Desert,creator@yahaha.com,Hello1234;
+EU,Production,Nature_Week,creator@yahaha.com,Hello1234;
+EU,Production,Tutorial_2,creator@yahaha.com,Hello1234;
+EU,Production,TerrainL,creator@yahaha.com,Hello1234;
+EU,Production,Forest,creator@yahaha.com,Hello1234;
+EU,Production,Empty_Scene,creator@yahaha.com,Hello1234;
+EU,Production,Basic_Shapes,creator@yahaha.com,Hello1234;
+EU,Production,Construction_Corps,creator@yahaha.com,Hello1234;
+EU,Production,Yahaha_Fall,creator@yahaha.com,Hello1234;
+EU,Production,Audio_Menglu,creator@yahaha.com,Hello1234;
+EU,Production,Viking_Ice_World,creator@yahaha.com,Test1234;
+EU,Production,Modern_Supermarket,info@novadev.com,Test1234;
+EU,Production,Japanese_Apartment,suppport@vonoffice.com,Test1234;
+EU,Production,House_Furniture_Pack,AidenGames@gmail.com,Test1234;
 EU,Production,Vectorian_interior,contact@alex.com,Test1234
 '''
