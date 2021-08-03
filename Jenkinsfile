@@ -72,15 +72,18 @@ def getSystem(system) {
 }
 
 def generateBuildProjectsStages(repos, environment, region) {
-    repos.each {
-        String credKey = "${region}-${environment}-Infinity_Shoot"
-        print credKey
-        print credsMap
-        credsMap.each {
-            // print it.key instanceof String
-        }
-        print credsMap[credKey]
-    }
+    // repos.each {
+    //     String credKey = "${region}-${environment}-Infinity_Shoot"
+    //     print credKey
+    //     print credsMap
+    //     credsMap.each {
+    //         // print it.key instanceof String
+    //     }
+    //     print credsMap[credKey]
+    // }
+    def mp = ["TopicName" : "Maps", "TopicDescription" : "Methods in Maps"] 
+    println(mp.get("TopicName")); 
+    println(mp.get("Topic")); 
     return repos.collectEntries {
         ["${it}" : {
             stage("Pull Project ${it}") {
