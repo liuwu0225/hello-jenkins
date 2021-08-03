@@ -85,7 +85,7 @@ def generateBuildProjectsStages(repos, environment, region) {
     //     // print credsMap[credKey]
     // }
     def mp = [:]
-    def key = "CN-Stging-Infinity_Shoot",
+    def key = "CN-Stging-Infinity_Shoot"
     mp["A-${key}"] = "creator@yahaha.com-Hello1234"
     mp["TopicName1"] = "Maps1"
     mp["TopicName2"] = "Maps2"
