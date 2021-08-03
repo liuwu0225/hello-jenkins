@@ -74,7 +74,7 @@ def getSystem(system) {
     }
 }
 
-def generateBuildProjectsStages(repos, system, region) {
+def generateBuildProjectsStages(repos, environment, region) {
     repos.each {
         def credKey = "${region}_${system}_${it}"
         print credKey
@@ -101,7 +101,7 @@ pipeline {
         GITEA_CREDS = credentials('liuwu-gitea')
     }
     parameters {
-        choice(name: 'System', choices: ['Stging', 'Production'], description: 'select to system to apply this build')
+        choice(name: 'Environment', choices: ['Stging', 'Production'], description: 'select to system to apply this build')
         choice(name: 'Region', choices: ['CN', 'EU'], description: 'select to system to apply this build')
         extendedChoice( 
             defaultValue: '',
@@ -137,7 +137,7 @@ pipeline {
             steps {
                 script {
                     loadCredentials()
-                    parallel generateBuildProjectsStages(repos, System, Region)
+                    parallel generateBuildProjectsStages(repos, Environment, Region)
                 }
             }
         }
