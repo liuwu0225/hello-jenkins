@@ -14,9 +14,12 @@ def loadCredentials() {
     def credsArr = credentials.split(";")
     credsArr.each {
         def data = it.split(",")
-        print "====================="
-        print "${data[0]}"
+        credsMap["${data[0]}_${data[1]}_${data[2]}"] = {
+            username: data[3],
+            password: data[4]
+        }
     }
+    print credsMap
 }
 
 def getProjects() {
