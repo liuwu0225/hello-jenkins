@@ -74,7 +74,11 @@ def getSystem(system) {
     }
 }
 
-def generateBuildProjectsStages(repos, system, userId) {
+def generateBuildProjectsStages(repos, system, region) {
+    repos.each {
+        def credKey = "${region}_${system}_${it}"
+        print credsMap[key]
+    }
     return repos.collectEntries {
         ["${it}" : {
             stage("Pull Project ${it}") {
@@ -84,7 +88,6 @@ def generateBuildProjectsStages(repos, system, userId) {
                     sh """
                         export MY_SYSTEM=${system}
                         export MY_USERID=${userId}
-                        printenv
                     """
                 }
             }
@@ -98,8 +101,8 @@ pipeline {
         GITEA_CREDS = credentials('liuwu-gitea')
     }
     parameters {
-        choice(name: 'System', choices: ['stg', 'prod'], description: 'select to system to apply this build')
-        string(name: 'UserId', defaultValue: '', description: 'input user id')
+        choice(name: 'System', choices: ['Stging', 'Production'], description: 'select to system to apply this build')
+        choice(name: 'Region', choices: ['CN', 'EU'], description: 'select to system to apply this build')
         extendedChoice( 
             defaultValue: '',
             description: 'select project(s) to be built', 
@@ -134,8 +137,7 @@ pipeline {
             steps {
                 script {
                     loadCredentials()
-                    // def sys = getSystem(System)
-                    // parallel generateBuildProjectsStages(repos, sys, UserId)
+                    parallel generateBuildProjectsStages(repos, System, Region)
                 }
             }
         }
