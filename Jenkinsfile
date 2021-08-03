@@ -103,9 +103,16 @@ def generateBuildProjectsStages(repos, environment, region) {
                 dir("Projects/${it}") {
                     // TODO
                     // Project build and post script
-                    String credKey = "${region}_${environment}_Infinity_Shoot"
+                    def credKey = "${region}_${environment}_Infinity_Shoot"
+                    def credential = credsMap[credKey]
+                    def sys = getSystem(environment)
+                    def username = credential.split(',')[0]
+                    def password = credential.split(',')[1]
                     sh """
-                        echo "${credsMap[credKey]}"
+                        export Account=${username}
+                        export Password=${password}
+                        export BgEnv=${sys}
+                        printenv
                     """
                 }
             }
