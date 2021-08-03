@@ -10,7 +10,7 @@ import hudson.model.*
 @Field def reposMap = [:]
 
 def loadCredentials() {
-    credentials.each { String line ->
+    credentials.eachLine { String line ->
         print "---------------------"
         println line
     }
