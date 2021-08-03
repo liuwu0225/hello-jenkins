@@ -79,7 +79,7 @@ def generateBuildProjectsStages(repos, environment, region) {
         def credKey = "${region}_${environment}_Infinity_Shoot"
         print credKey
         print credsMap
-        print credsMap["${credKey}"]
+        print credsMap.CN_Stging_Lover_Catcher
     }
     return repos.collectEntries {
         ["${it}" : {
