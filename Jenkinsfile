@@ -10,7 +10,7 @@ import hudson.model.*
 @Field def reposMap = [:]
 
 def loadCredentials() {
-    new File("../assets-credentials.csv").eachLine { line ->
+    new File("./assets-credentials.csv").eachLine { line ->
         println line
     }
 }
