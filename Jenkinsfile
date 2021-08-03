@@ -101,7 +101,7 @@ pipeline {
         GITEA_CREDS = credentials('liuwu-gitea')
     }
     parameters {
-        choice(name: 'Env', choices: ['Stging', 'Production'], description: 'select to system to apply this build')
+        choice(name: 'Build_System', choices: ['Stging', 'Production'], description: 'select to system to apply this build')
         choice(name: 'Region', choices: ['CN', 'EU'], description: 'select to system to apply this build')
         extendedChoice( 
             defaultValue: '',
@@ -137,7 +137,7 @@ pipeline {
             steps {
                 script {
                     loadCredentials()
-                    parallel generateBuildProjectsStages(repos, Env, Region)
+                    parallel generateBuildProjectsStages(repos, Build_System, Region)
                 }
             }
         }
