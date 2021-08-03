@@ -76,7 +76,7 @@ def getSystem(system) {
 
 def generateBuildProjectsStages(repos, environment, region) {
     repos.each {
-        def credKey = "${region}_${system}_${it}"
+        def credKey = "${region}_${system}_Infinity_Shoot"
         print credKey
         print credsMap[credKey]
     }
