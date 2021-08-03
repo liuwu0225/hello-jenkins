@@ -77,9 +77,7 @@ def generateBuildProjectsStages(repos, environment, region) {
         print credKey
         print credsMap
         credsMap.each {
-            if(it.key == "CN-Stging-Infinity_Shoot") {
-                print it.key
-            }
+            print it.key instanceof String
         }
         print credsMap.(credKey as String)
     }
