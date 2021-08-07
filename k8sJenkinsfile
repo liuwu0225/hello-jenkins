@@ -1,0 +1,23 @@
+#!/usr/bin/env groovy
+pipeline {
+    agent {
+        kubernetes {
+                containerTemplate {
+                name 'helm'
+                image 'lachlanevenson/k8s-helm:v3.1.1'
+                ttyEnabled true
+                command 'cat'
+            }
+        }
+    }
+
+    stages {
+        stage('Deploy Streaming') {
+            steps {
+                container('helm') { 
+                    sh "helm version"
+                } 
+            }
+        }
+    }
+}
