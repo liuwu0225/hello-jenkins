@@ -23,7 +23,7 @@
 // }
 
 podTemplate(containers: [
-    containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest'),
+    // containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest'),
     containerTemplate(name: 'busybox', image: 'busybox'),
   ]) {
 
