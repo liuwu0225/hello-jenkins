@@ -45,7 +45,7 @@
 //     }
 // }
 
-podTemplate {
+podTemplate（cloud: 'kubernetes'） {
     node(POD_LABEL) {
         stage('Run shell') {
             sh 'echo hello world'
