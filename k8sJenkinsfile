@@ -23,7 +23,7 @@
 // }
 
 podTemplate(containers: [
-    containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest', command: 'sleep', args: '99d'),
+    containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest'),
   ]) {
 
     node(POD_LABEL) {
