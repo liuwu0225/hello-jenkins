@@ -45,9 +45,9 @@
 //     }
 // }
 
-podTemplate {
-    node('jenkins-slave') {
-        stage('Run shell') {
+podTemplate(label: 'jenkins-slave') {
+    node() {
+        stage(POD_LABEL) {
             sh 'echo hello world'
         }
     }
