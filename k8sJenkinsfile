@@ -56,14 +56,13 @@ pipeline {
     agent {
         docker { 
             image 'campbelldgunn/k8s-helm' 
-            args '-it --entrypoint=/bin/sh'
+            args '-i --entrypoint='
         }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'helm version'
-                sh 'exit 0'  
+                sh 'helm version & exit 0'
             }
         }
     }
