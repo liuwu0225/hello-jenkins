@@ -3,7 +3,7 @@
 pipeline {
     agent {
         docker { 
-            image 'campbelldgunn/k8s-helm' 
+            image 'lachlanevenson/k8s-helm' 
             args '-i --entrypoint='
         }
     }
