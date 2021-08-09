@@ -22,25 +22,33 @@
 //     }
 // }
 
-podTemplate(containers: [
-    // containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest'),
-    containerTemplate(name: 'busybox', image: 'busybox'),
-  ]) {
+// podTemplate(containers: [
+//     // containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest'),
+//     containerTemplate(name: 'busybox', image: 'busybox'),
+//   ]) {
 
+//     node(POD_LABEL) {
+//         // stage('Helm slave test') {
+//         //     container('k8s-helm') {
+//         //         stage('Helm Version') {
+//         //             sh 'helm version'
+//         //         }
+//         //     }
+//         // }
+//         stage('Busybox') {
+//             container('busybox') {
+//                 stage('busy box test') {
+//                     sh 'echo "Hello Busybox"'
+//                 }
+//             }
+//         }
+//     }
+// }
+
+podTemplate {
     node(POD_LABEL) {
-        // stage('Helm slave test') {
-        //     container('k8s-helm') {
-        //         stage('Helm Version') {
-        //             sh 'helm version'
-        //         }
-        //     }
-        // }
-        stage('Busybox') {
-            container('busybox') {
-                stage('busy box test') {
-                    sh 'echo "Hello Busybox"'
-                }
-            }
+        stage('Run shell') {
+            sh 'echo hello world'
         }
     }
 }
