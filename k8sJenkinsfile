@@ -54,7 +54,10 @@
 // }
 pipeline {
     agent {
-        docker { image 'campbelldgunn/k8s-helm' }
+        docker { 
+            image 'campbelldgunn/k8s-helm' 
+            args '-i --entrypoint='
+        }
     }
     stages {
         stage('Test') {
