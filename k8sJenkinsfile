@@ -63,6 +63,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'helm version'
+                exit 0
             }
         }
     }
