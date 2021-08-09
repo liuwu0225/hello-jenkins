@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 
-                sh "helm upgrade streaming-deployment ./helm/content-delivery-service -n streaming-test-system --kubeconfig=$MY_KUBECONFIG"
+                sh "helm upgrade streaming-deployment ./helm/content-delivery-service -n streaming-system --kubeconfig=$MY_KUBECONFIG"
             }
         }
     }

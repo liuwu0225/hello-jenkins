@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: streaming-app
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 30332
       targetPort: 30332
