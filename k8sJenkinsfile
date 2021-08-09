@@ -47,7 +47,7 @@
 
 podTemplate(label: 'jenkins-slave') {
     node() {
-        stage(POD_LABEL) {
+        stage('jnlp test') {
             sh 'echo hello world'
         }
     }
