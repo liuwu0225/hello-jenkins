@@ -45,21 +45,10 @@
 //     }
 // }
 
-podTemplate(containers: [
-    containerTemplate(name: 'maven', image: 'maven:3.8.1-jdk-8', command: 'sleep', args: '99d'),
-  ]) {
+podTemplate {
     node(POD_LABEL) {
-        stage('jnlp test') {
+        stage('Run shell') {
             sh 'echo hello world'
-        }
-
-        stage('Get a Maven project') {
-            git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-            container('maven') {
-                stage('Build a Maven project') {
-                    sh 'mvn -B -ntp clean install'
-                }
-            }
         }
     }
 }
