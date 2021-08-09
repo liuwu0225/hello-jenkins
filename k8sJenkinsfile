@@ -45,10 +45,22 @@
 //     }
 // }
 
-podTemplate {
-    node(POD_LABEL) {
-        stage('Run shell') {
-            sh 'echo hello world'
+// podTemplate {
+//     node(POD_LABEL) {
+//         stage('Run shell') {
+//             sh 'echo hello world'
+//         }
+//     }
+// }
+pipeline {
+    agent {
+        docker { image 'lachlanevenson/k8s-helm:latest' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'helm version'
+            }
         }
     }
 }
