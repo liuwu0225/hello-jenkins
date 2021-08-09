@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: streaming-deployment
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: streaming-app
+  template:
+    metadata:
+      labels:
+        app: streaming-app
+    spec:
+      containers:
+      - name: main
+        image: {{ .Values.app.image }}
+        ports:
+        - containerPort: 30332
+        env:
+          - name: POSTGRES_HOST
+            value: {{ .Values.postgres.host }}
+          - name: POSTGRES_IP
+            value: {{ .Values.postgres.ip }}
+          - name: POSTGRES_DBNAME
+            value: {{ .Values.postgres.database }}
+          - name: POSTGRES_PORT
+            value: "{{ .Values.postgres.port }}"
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: pg_user
+          - name: POSTGRES_PASS
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: pg_password
+          - name: STORAGE_BACKEND
+            value: {{ .Values.app.envs.storageBackend }}
+          - name: ENVIRONMENT_TYPE
+            value: {{ .Values.app.envs.environmentType }}
+          - name: HOSTNAME
+            value: {{ .Values.app.envs.hostName }}
+          - name: GCS_BUCKET_NAME
+            value: {{ .Values.app.envs.GCSBucketName }}
+          - name: OSS_MEDIA_BUCKET_NAME
+            value: {{ .Values.app.envs.OSSMediaBucketName }}
+          - name: GENESIS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: genesis_key
+          - name: GENESIS_SECRET 
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: genesis_secret
+          - name: STREAMING_CDN_LINK
+            value: {{ .Values.app.envs.streamingCDNLink }}
+          - name: MEDIA_CDN_LINK
+            value: {{ .Values.app.envs.mediaCDNLink }}
+          - name: COS_MEDIA_BUCKET_ENDPOINT
+            value: {{ .Values.app.envs.COSMediaBucketEndpoint }}
+          - name: COS_CONTENT_BUCKET_ENDPOINT
+            value: {{ .Values.app.envs.COSContentBucketEndpoint }}
+          - name: CONTENT_BUCKET_ACCELERATE_URL
+            value: {{ .Values.app.envs.contentBucketAccelerateURL }}
+          - name: GENESIS_URL
+            value: {{ .Values.app.envs.genesisURL }}
+          - name: COS_SECRET_ID 
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: cos_secret_id
+          - name: COS_SECRET_KEY 
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: cos_secret_key
+          - name: COS_CDN_SECRET 
+            valueFrom:
+              secretKeyRef:
+                name: streaming-secret
+                key: cos_cdn_secret
+      imagePullSecrets:
+        - name: {{ .Values.app.imagePullSecret }}

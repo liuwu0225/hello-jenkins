@@ -1,0 +1,25 @@
+namespace: streaming-system
+app:
+  name: streaming-deployment
+  replicas: 2
+  image: registry.cn-shanghai.aliyuncs.com/molygoo-registry/content_delivery_prd:latest
+  imagePullSecret: regcred
+  envs:
+    storageBackend: cos
+    environmentType: test
+    hostName: content-api-local.cloud.unity3d.com:22443
+    GCSBucketName: yahaha-1305843802
+    OSSMediaBucketName: media-1305843802
+    streamingCDNLink: https://cdn.yahaha.com
+    mediaCDNLink: https://media-cdn.yahaha.com
+    COSMediaBucketEndpoint: https://media-1305843802.cos.eu-frankfurt.myqcloud.com
+    COSContentBucketEndpoint: https://yahaha-1305843802.cos.eu-frankfurt.myqcloud.com
+    contentBucketAccelerateURL: https://yahaha-1305843802.cos.accelerate.myqcloud.com
+    genesisURL: https://api-eu.yahaha.com
+  serviceName: streaming-service
+postgres:
+  ip: 10.0.0.5
+  host: 10.0.0.5
+  port: "5432"
+  database: content_delivery_prd
+  
