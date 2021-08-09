@@ -1,57 +1,5 @@
 #!/usr/bin/env groovy
-// pipeline {
-//     agent {
-//         kubernetes {
-//             containerTemplate {
-//                 name 'helm'
-//                 image 'lachlanevenson/k8s-helm:v3.1.1'
-//                 ttyEnabled true
-//                 command 'cat'
-//             }
-//         }
-//     }
 
-//     stages {
-//         stage('Deploy Streaming') {
-//             steps {
-//                 container('helm') { 
-//                     sh "helm version"
-//                 } 
-//             }
-//         }
-//     }
-// }
-
-// podTemplate(containers: [
-//     // containerTemplate(name: 'k8s-helm', image: 'lachlanevenson/k8s-helm:latest'),
-//     containerTemplate(name: 'busybox', image: 'busybox'),
-//   ]) {
-
-//     node(POD_LABEL) {
-//         // stage('Helm slave test') {
-//         //     container('k8s-helm') {
-//         //         stage('Helm Version') {
-//         //             sh 'helm version'
-//         //         }
-//         //     }
-//         // }
-//         stage('Busybox') {
-//             container('busybox') {
-//                 stage('busy box test') {
-//                     sh 'echo "Hello Busybox"'
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// podTemplate {
-//     node(POD_LABEL) {
-//         stage('Run shell') {
-//             sh 'echo hello world'
-//         }
-//     }
-// }
 pipeline {
     agent {
         docker { 
@@ -59,10 +7,14 @@ pipeline {
             args '-i --entrypoint='
         }
     }
+    environment {
+        MY_KUBECONFIG = credentials('tecent-kubeconfig')
+    }
+
     stages {
         stage('Test') {
             steps {
-                sh 'helm version & exit 0'
+                sh 'kubectl get ns & exit 0'
             }
         }
     }
