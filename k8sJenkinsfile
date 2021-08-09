@@ -8,7 +8,7 @@ pipeline {
         }
     }
     environment {
-        MY_KUBECONFIG = credentials('tecent-kubeconfig')
+        MY_KUBECONFIG = credentials('tencent-kubeconfig')
     }
 
     stages {
