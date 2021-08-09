@@ -56,7 +56,7 @@ pipeline {
     agent {
         docker { 
             image 'campbelldgunn/k8s-helm' 
-            args '-it --entrypoint='
+            args '-it --entrypoint=/bin/sh'
         }
     }
     stages {
