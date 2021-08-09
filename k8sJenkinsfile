@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'kubectl get ns & exit 0'
+                sh "helm list -n streaming-system --kubeconfig=$MY_KUBECONFIG & exit 0"
             }
         }
     }
