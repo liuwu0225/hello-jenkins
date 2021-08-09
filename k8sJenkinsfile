@@ -54,12 +54,12 @@
 // }
 pipeline {
     agent {
-        docker { image 'lachlanevenson/k8s-helm:latest' }
+        docker { image 'node:14-alpine' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'helm version'
+                sh 'node --version'
             }
         }
     }
